@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  frontend:
+    build: .
+    container_name: ndc_frontend_backoffice
+    environment:
+      REACT_APP_BASE_URL: http://3.1.107.165:4000
+    ports:
+      - '4005:80'
