@@ -5,6 +5,7 @@ WORKDIR /app
 COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
+COPY hello /tmp/hello
 COPY healthy /tmp/healthy
 RUN yarn install
 # RUN yarn build
