@@ -1,9 +1,11 @@
 # 1. For build React app
 FROM node:16 AS development
 # Set working directory
-WORKDIR /app
+WORKDIR /tmp
 # file for health check
-COPY healthy /tmp/
+COPY healthy ./healthy
+# Set working directory
+WORKDIR /app
 COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
