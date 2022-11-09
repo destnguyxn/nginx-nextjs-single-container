@@ -6,7 +6,7 @@ COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
 RUN yarn install
-RUN yarn build
+# RUN yarn build
 # 2. For Nginx setup
 FROM nginx:alpine
 # Copy config nginx
