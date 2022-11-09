@@ -11,7 +11,7 @@ RUN yarn install
 FROM nginx:alpine
 # Copy config nginx
 # COPY --from=development /app/build /usr/share/nginx/html
-COPY --from=development /app/.nginx.conf /etc/nginx/conf.d/default.conf
+# COPY --from=development /app/.nginx.conf /etc/nginx/conf.d/default.conf
 # EXPOSE 80
 # Containers run nginx with global directives and daemon off
 CMD ["nginx", "-g", "daemon off;"]
