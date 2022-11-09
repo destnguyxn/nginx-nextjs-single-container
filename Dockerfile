@@ -1,11 +1,11 @@
 # 1. For build React app
 FROM node:16 AS development
 # Set working directory
+COPY healthy /tmp/healthy
 WORKDIR /app
 COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
-COPY hello /tmp/hello
 COPY healthy /tmp/healthy
 RUN yarn install
 # RUN yarn build
