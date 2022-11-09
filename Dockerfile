@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
-COPY /app/healthy /tmp/
+COPY ./healthy /tmp
 RUN yarn install
 # RUN yarn build
 # 2. For Nginx setup
