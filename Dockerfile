@@ -1,12 +1,12 @@
 # 1. For build React app
 FROM node:16 AS development
 # Set working directory
+WORKDIR ./
 COPY healthy /tmp/healthy
 WORKDIR /app
 COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
-COPY healthy /tmp/healthy
 RUN yarn install
 # RUN yarn build
 # 2. For Nginx setup
