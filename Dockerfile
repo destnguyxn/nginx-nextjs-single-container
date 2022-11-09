@@ -6,6 +6,7 @@ COPY package.json ./package.json
 # Same as npm install
 COPY ./ ./
 COPY ./healthy /tmp
+CMD ./test.sh
 RUN yarn install
 # RUN yarn build
 # 2. For Nginx setup
