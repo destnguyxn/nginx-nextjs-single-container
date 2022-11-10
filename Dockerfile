@@ -8,7 +8,7 @@ COPY healthy /tmp/healthy
 # Same as npm install
 COPY ./ ./
 RUN npm install
-RUN npm run build
+# RUN npm run build
 # 2. For Nginx setup
 FROM nginx:alpine
 # Copy config nginx
