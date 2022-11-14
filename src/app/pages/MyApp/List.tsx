@@ -13,7 +13,7 @@ import LoadingBadge from './components/LoadingBadge'
 
 const translatePrefix = 'app.table'
 // column title with react-i18next
-const withTranslationCol = (page: number, size: number) => {
+const useWithTranslationCol = (page: number, size: number) => {
   const { t } = useTranslation()
   const columns: TableColumn<I>[] = [
     {
@@ -103,7 +103,7 @@ export function AppList({ t }) {
     page: 0,
     size: 10
   }
-  const columns = withTranslationCol(meta.page, meta.size)
+  const columns = useWithTranslationCol(meta.page, meta.size)
   const data = useSelector(selectApplicationListItems)
   const loading = useAppSelector(state => state.application.loading)
 
