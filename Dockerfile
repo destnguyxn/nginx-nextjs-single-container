@@ -14,6 +14,7 @@ FROM nginx:alpine
 # Copy config nginx
 COPY --from=development /app/build /usr/share/nginx/html
 COPY --from=development /app/.nginx.conf /etc/nginx/conf.d/default.conf
+
 # File copy for health check
 COPY --from=development /tmp/healthy /tmp/healthy
 EXPOSE 80
