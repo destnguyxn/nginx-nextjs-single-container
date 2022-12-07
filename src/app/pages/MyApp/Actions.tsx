@@ -137,7 +137,7 @@ export default function AppAction() {
           : null,
       url: (value, fields) =>
         // eslint-disable-next-line no-nested-ternary
-        fields.type === AppType.service && !value
+        fields.type === AppType.service && value
           ? // eslint-disable-next-line prefer-regex-literals
             new RegExp(
               // eslint-disable-next-line no-control-regex
