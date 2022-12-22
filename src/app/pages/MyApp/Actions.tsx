@@ -19,54 +19,54 @@ import {
   TextInput,
   ThemeIcon,
   Title,
-  Tooltip
-} from '@mantine/core'
-import React, { useEffect } from 'react'
-import { useForm } from '@mantine/form'
+  Tooltip,
+} from "@mantine/core";
+import React, { useEffect } from "react";
+import { useForm } from "@mantine/form";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { faker } from '@faker-js/faker'
-import { Application, AppType } from 'domain/application'
-import { FileWithPath } from '@mantine/dropzone'
-import { MAX_FILE_COUNT, MAX_FILE_SIZE } from 'common/string'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { APPLICATION_MODIFY } from 'common'
-import removeEmpty from 'utils/removeEmpty'
-import { IconLoader, IconQuestionMark } from '@tabler/icons'
-import { useAppDispatch, useAppSelector } from '@redux/hooks'
-import fakeNetwork from 'utils/fakeNetwork'
-import { RequiredField } from 'utils/type'
-import readFileAsync from 'utils/readFileAsync'
-import Spinner from 'app/components/LoadingSpinner/Spinner'
-import ImageUpload from './components/Upload'
-import { selectApplicationModify } from './slice/selector'
-import { createApp, getAppDetail, setLoading, updateApp } from './slice'
+import { faker } from "@faker-js/faker";
+import { Application, AppType } from "domain/application";
+import { FileWithPath } from "@mantine/dropzone";
+import { MAX_FILE_COUNT, MAX_FILE_SIZE } from "common/string";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { APPLICATION_MODIFY } from "common";
+import removeEmpty from "utils/removeEmpty";
+import { IconLoader, IconQuestionMark } from "@tabler/icons";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import fakeNetwork from "utils/fakeNetwork";
+import { RequiredField } from "utils/type";
+import readFileAsync from "utils/readFileAsync";
+import Spinner from "app/components/LoadingSpinner/Spinner";
+import ImageUpload from "./components/Upload";
+import { selectApplicationModify } from "./slice/selector";
+import { createApp, getAppDetail, setLoading, updateApp } from "./slice";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const gameSelection = [
   {
-    label: 'Kart rider',
-    value: '634516ce84b8bd8a12965359'
+    label: "Kart rider",
+    value: "634516ce84b8bd8a12965359",
   },
   {
-    label: 'Maple story',
-    value: '6357b2593ac14976bbcd043e'
+    label: "Maple story",
+    value: "6357b2593ac14976bbcd043e",
   },
   {
-    label: 'FiFa Online 4',
-    value: '6357b2593ac14976bbcd038e'
-  }
-]
+    label: "FiFa Online 4",
+    value: "6357b2593ac14976bbcd038e",
+  },
+];
 
 const typeSelections = [
   {
-    label: 'Develop',
-    value: AppType.develop
+    label: "Develop",
+    value: AppType.develop,
   },
   {
-    label: 'Service',
-    value: AppType.service
-  }
-]
+    label: "Service",
+    value: AppType.service,
+  },
+];
 // from value interface
 // interface FV {
 //   gameId: string
@@ -80,60 +80,60 @@ const typeSelections = [
 
 type FV = Pick<
   Application,
-  'gameId' | 'name' | 'description' | 'type' | 'url'
-> & { icon: File | string; useDefaultIcon: boolean }
+  "gameId" | "name" | "description" | "type" | "url"
+> & { icon: File | string; useDefaultIcon: boolean };
 
 const validateImage = (file: FileWithPath) => {
   if (file.size <= MAX_FILE_SIZE) {
-    return file
+    return file;
   }
-  return undefined
-}
+  return undefined;
+};
 
 const finitialValues: FV = {
-  gameId: '',
-  name: '',
-  description: '',
-  icon: '',
+  gameId: "",
+  name: "",
+  description: "",
+  icon: "",
   type: AppType.develop,
-  url: '',
-  useDefaultIcon: false
-}
+  url: "",
+  useDefaultIcon: false,
+};
 
 const formatFormData = (values: FV) => {
   if (values.type !== AppType.service) {
-    values.icon = ''
-    values.url = undefined
-    values.description = undefined
+    values.icon = "";
+    values.url = undefined;
+    values.description = undefined;
   }
-  const cleanedValues = removeEmpty<FV>(values)
+  const cleanedValues = removeEmpty<FV>(values);
   if (cleanedValues.useDefaultIcon) {
-    delete cleanedValues.icon
+    delete cleanedValues.icon;
   }
-  delete cleanedValues.useDefaultIcon
-  return cleanedValues as Required<FV>
-}
+  delete cleanedValues.useDefaultIcon;
+  return cleanedValues as Required<FV>;
+};
 
 export default function AppAction() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const { id } = useParams()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams();
 
-  const modifying = location.pathname.includes(APPLICATION_MODIFY)
-  const data = useAppSelector(state =>
-    selectApplicationModify(state, id || '1')
-  )
-  const loading = useAppSelector(state => state.application.loading)
-  const dispatch = useAppDispatch()
+  const modifying = location.pathname.includes(APPLICATION_MODIFY);
+  const data = useAppSelector((state) =>
+    selectApplicationModify(state, id || "1")
+  );
+  const loading = useAppSelector((state) => state.application.loading);
+  const dispatch = useAppDispatch();
 
   const form = useForm({
     initialValues: finitialValues, // setting form initial value could fix react error: Component changing from uncontrolled to controlled
     validate: {
-      name: value =>
-        !value || value.length < 1 ? 'Application name is required' : null,
+      name: (value) =>
+        !value || value.length < 1 ? "Application name is required" : null,
       icon: (value, fields) =>
         fields.type === AppType.service && !fields.useDefaultIcon && !value
-          ? 'Application icon is required'
+          ? "Application icon is required"
           : null,
       url: (value, fields) =>
         // eslint-disable-next-line no-nested-ternary
@@ -141,21 +141,21 @@ export default function AppAction() {
           ? // eslint-disable-next-line prefer-regex-literals
             new RegExp(
               // eslint-disable-next-line no-control-regex
-              '/[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/gi'
+              "/[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/gi"
             ).test(value)
             ? null
-            : 'Invalid Url'
-          : null
-    }
-  })
+            : "Invalid Url"
+          : null,
+    },
+  });
 
-  const handleFormSubmit = async values => {
+  const handleFormSubmit = async (values) => {
     if (form.isTouched()) {
       if (form.isValid()) {
-        const formData = formatFormData(values)
+        const formData = formatFormData(values);
 
         try {
-          dispatch(setLoading(true))
+          dispatch(setLoading(true));
           if (modifying && id) {
             if (formData.icon && formData.icon instanceof File) {
               // upload stuff
@@ -164,72 +164,72 @@ export default function AppAction() {
                 updateApp({
                   ...formData,
                   id,
-                  imageUrl: URL.createObjectURL(formData.icon)
+                  imageUrl: URL.createObjectURL(formData.icon),
                 })
-              )
-            } else dispatch(updateApp({ ...formData, id }))
+              );
+            } else dispatch(updateApp({ ...formData, id }));
           } else if (formData.icon && formData.icon instanceof File) {
             // upload stuff
             // but we are mocking, so we just use the ObjectUrl
             dispatch(
               createApp({
                 ...formData,
-                imageUrl: URL.createObjectURL(formData.icon)
+                imageUrl: URL.createObjectURL(formData.icon),
               })
-            )
-          } else dispatch(createApp(formData))
-          dispatch(setLoading(false))
+            );
+          } else dispatch(createApp(formData));
+          dispatch(setLoading(false));
         } catch (error) {
-          dispatch(setLoading(false))
+          dispatch(setLoading(false));
 
           // eslint-disable-next-line no-alert, no-undef
-          alert(error)
+          alert(error);
         }
       }
-    } else console.error(values)
-  }
+    } else console.error(values);
+  };
 
   const addImage = (fileList: FileWithPath[]) => {
     if (fileList.length <= MAX_FILE_COUNT) {
-      const image = validateImage(fileList[0])
+      const image = validateImage(fileList[0]);
       if (image) {
-        form.setFieldValue('icon', image)
+        form.setFieldValue("icon", image);
       } else {
         // eslint-disable-next-line no-alert, no-undef
-        alert('File size is too large')
+        alert("File size is too large");
       }
     }
-  }
+  };
 
   useEffect(() => {
     if (data) {
       form.setValues({
-        ...data
-      })
+        ...data,
+      });
     }
-  }, [data])
+  }, [data, form]);
 
   useEffect(() => {
     if (modifying) {
-      dispatch(getAppDetail(id!))
-      form.setValues({ ...data })
+      dispatch(getAppDetail(id!));
+      form.setValues({ ...data });
     }
-  }, [])
+  }, [data, dispatch, form, id, modifying]);
 
   return (
     <>
       <Title order={2}>
-        {modifying ? 'Edit application' : 'Register Application'}
+        {modifying ? "Edit application" : "Register Application"}
       </Title>
 
       <div className="relative">
         {loading && <Spinner />}
         <form
           onSubmit={form.onSubmit((values, event) => {
-            event.preventDefault()
-            handleFormSubmit(values).then(res => {
-              navigate(-1)
-            })
+            event.preventDefault();
+            handleFormSubmit(values).then((res) => {
+              navigate(-1);
+            });
           })}
         >
           <Stack spacing="lg">
@@ -243,7 +243,7 @@ export default function AppAction() {
               required
               nothingFound="No options"
               data={gameSelection}
-              {...form.getInputProps('gameId')}
+              {...form.getInputProps("gameId")}
             />
             <Select
               size="md"
@@ -255,7 +255,7 @@ export default function AppAction() {
               searchable
               nothingFound="No options"
               data={typeSelections}
-              {...form.getInputProps('type')}
+              {...form.getInputProps("type")}
             />
 
             <Text weight={600} size="md">
@@ -266,27 +266,27 @@ export default function AppAction() {
               // required
               size="md"
               placeholder="Application name"
-              {...form.getInputProps('name')}
+              {...form.getInputProps("name")}
             />
             {form.values.type === AppType.service && (
               <>
                 <TextInput
                   size="md"
                   placeholder="Application url"
-                  {...form.getInputProps('url')}
+                  {...form.getInputProps("url")}
                 />
                 <Textarea
                   size="md"
                   placeholder="Application description"
                   minRows={4}
-                  {...form.getInputProps('description')}
+                  {...form.getInputProps("description")}
                 />
 
                 <Input.Wrapper
                   size="md"
                   label="Upload an image"
                   description="Upload an image to be used as a representative image of the service."
-                  {...form.getInputProps('icon')}
+                  {...form.getInputProps("icon")}
                 >
                   <Stack className="pt-[10px]" spacing={10}>
                     <Checkbox
@@ -307,26 +307,26 @@ export default function AppAction() {
                           </Tooltip>
                         </Group>
                       }
-                      {...form.getInputProps('useDefaultIcon', {
-                        type: 'checkbox'
+                      {...form.getInputProps("useDefaultIcon", {
+                        type: "checkbox",
                       })}
                     />
 
                     <ImageUpload
-                      setImage={v => {
-                        form.setFieldValue('icon', v)
+                      setImage={(v) => {
+                        form.setFieldValue("icon", v);
                       }}
                       onDrop={addImage}
                       disabled={form.values.useDefaultIcon}
                       imageSrc={
                         // if icon is a string, use it as image src else parse it as file
                         // eslint-disable-next-line no-nested-ternary
-                        form.getInputProps('icon').value
-                          ? typeof form.getInputProps('icon').value !== 'string'
+                        form.getInputProps("icon").value
+                          ? typeof form.getInputProps("icon").value !== "string"
                             ? URL.createObjectURL(
-                                form.getInputProps('icon').value
+                                form.getInputProps("icon").value
                               )
-                            : form.getInputProps('icon').value
+                            : form.getInputProps("icon").value
                           : undefined
                       }
                     />
@@ -342,16 +342,16 @@ export default function AppAction() {
                   Service.
                 </Title>
                 <ScrollArea
-                  styles={theme => ({
+                  styles={(theme) => ({
                     viewport: {
                       paddingRight: 12,
                       paddingLeft: 12,
                       height: 200,
                       backgroundColor:
-                        theme.colorScheme === 'dark'
+                        theme.colorScheme === "dark"
                           ? theme.colors.dark[7]
-                          : theme.white
-                    }
+                          : theme.white,
+                    },
                   })}
                 >
                   <div>
@@ -413,7 +413,7 @@ export default function AppAction() {
           <Space h="lg" />
           <Group spacing="sm" position="center">
             <Button size="md" type="submit">
-              {modifying ? 'Save' : 'Register'}
+              {modifying ? "Save" : "Register"}
             </Button>
             <Button size="md" variant="default" onClick={() => navigate(-1)}>
               Cancel
@@ -422,5 +422,5 @@ export default function AppAction() {
         </form>
       </div>
     </>
-  )
+  );
 }

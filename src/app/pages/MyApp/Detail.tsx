@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
-import { faker } from '@faker-js/faker'
+import { faker } from "@faker-js/faker";
 import {
   List,
   Space,
@@ -17,57 +17,57 @@ import {
   TextInput,
   Textarea,
   Button,
-  Image
-} from '@mantine/core'
-import { useAppDispatch, useAppSelector } from '@redux/hooks'
-import { IconCheck, IconCopy } from '@tabler/icons'
-import { APPLICATION_MODIFY } from 'common'
-import { AppType } from 'domain/application'
-import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { formatFullTime } from 'utils/time'
-import { getAppDetail } from './slice'
-import { selectApplicationDetail } from './slice/selector'
+  Image,
+} from "@mantine/core";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { IconCheck, IconCopy } from "@tabler/icons";
+import { APPLICATION_MODIFY } from "common";
+import { AppType } from "domain/application";
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { formatFullTime } from "utils/time";
+import { getAppDetail } from "./slice";
+import { selectApplicationDetail } from "./slice/selector";
 
 const gameSelection = [
   {
-    label: 'Kart rider',
-    value: '634516ce84b8bd8a12965359'
+    label: "Kart rider",
+    value: "634516ce84b8bd8a12965359",
   },
   {
-    label: 'Maple story',
-    value: '6357b2593ac14976bbcd043e'
+    label: "Maple story",
+    value: "6357b2593ac14976bbcd043e",
   },
   {
-    label: 'FiFa Online 4',
-    value: '6357b2593ac14976bbcd038e'
-  }
-]
+    label: "FiFa Online 4",
+    value: "6357b2593ac14976bbcd038e",
+  },
+];
 
 const typeSelections = [
   {
-    label: 'Develop',
-    value: AppType.develop
+    label: "Develop",
+    value: AppType.develop,
   },
   {
-    label: 'Service',
-    value: AppType.service
-  }
-]
+    label: "Service",
+    value: AppType.service,
+  },
+];
 
 export default function AppDetail() {
-  const { id } = useParams()
-  const data = useAppSelector(state =>
-    selectApplicationDetail(state, id || '1')
-  )
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const data = useAppSelector((state) =>
+    selectApplicationDetail(state, id || "1")
+  );
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('fetching')
+    console.log("fetching");
 
-    dispatch(getAppDetail(id!))
-  }, [id])
+    dispatch(getAppDetail(id!));
+  }, [dispatch, id]);
 
   return (
     <div>
@@ -76,10 +76,10 @@ export default function AppDetail() {
         <Space />
         {data && (
           <List
-            styles={theme => ({
+            styles={(theme) => ({
               itemWrapper: {
-                width: '100%'
-              }
+                width: "100%",
+              },
             })}
           >
             <Stack spacing="lg">
@@ -89,10 +89,10 @@ export default function AppDetail() {
                   withPadding
                   listStyleType="none"
                   className="overflow-hidden"
-                  styles={theme => ({
+                  styles={(theme) => ({
                     itemWrapper: {
-                      width: '100%'
-                    }
+                      width: "100%",
+                    },
                   })}
                 >
                   <Stack className=" min-w-0 flex">
@@ -100,14 +100,14 @@ export default function AppDetail() {
                       <CopyButton value={data.token?.token} timeout={2000}>
                         {({ copied, copy }) => (
                           <Tooltip
-                            label={copied ? 'Copied' : 'Copy'}
+                            label={copied ? "Copied" : "Copy"}
                             withArrow
                             position="right"
                           >
                             <Group className="w-fit">
                               <Text weight={500}>Development token</Text>
                               <ActionIcon
-                                color={copied ? 'teal' : 'gray'}
+                                color={copied ? "teal" : "gray"}
                                 onClick={copy}
                               >
                                 {copied ? (
@@ -140,10 +140,10 @@ export default function AppDetail() {
                 <List
                   listStyleType="none"
                   withPadding
-                  styles={theme => ({
+                  styles={(theme) => ({
                     itemWrapper: {
-                      width: '100%'
-                    }
+                      width: "100%",
+                    },
                   })}
                 >
                   <Stack>
@@ -207,13 +207,13 @@ export default function AppDetail() {
 
                             {data.imageUrl && (
                               <Image
-                                styles={themeObj => ({
+                                styles={(themeObj) => ({
                                   placeholder: {
                                     backgroundColor:
-                                      themeObj.colorScheme === 'dark'
+                                      themeObj.colorScheme === "dark"
                                         ? themeObj.colors.dark[6]
-                                        : themeObj.colors.gray[2]
-                                  }
+                                        : themeObj.colors.gray[2],
+                                  },
                                 })}
                                 radius="md"
                                 src={data.imageUrl}
@@ -254,5 +254,5 @@ export default function AppDetail() {
         )}
       </div>
     </div>
-  )
+  );
 }

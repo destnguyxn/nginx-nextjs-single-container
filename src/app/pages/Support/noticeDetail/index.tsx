@@ -1,30 +1,30 @@
-import { useAppDispatch, useAppSelector } from '@redux/hooks'
-import { RootState } from '@redux/store'
-import { Title, Text, Button } from '@mantine/core'
-import { withTranslation } from 'react-i18next'
-import TitleListDetail from 'app/components/TitleListDetail'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import { IconArrowLeft } from '@tabler/icons'
-import { NOTICE } from 'common'
-import { fetchAsyncNoticeDetails } from '../slices'
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { RootState } from "@redux/store";
+import { Title, Text, Button } from "@mantine/core";
+import { withTranslation } from "react-i18next";
+import TitleListDetail from "app/components/TitleListDetail";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { IconArrowLeft } from "@tabler/icons";
+import { NOTICE } from "common";
+import { fetchAsyncNoticeDetails } from "../slices";
 
 function NoticeDetail({ t }) {
-  const { id } = useParams()
-  const { noticeDetails } = useAppSelector((state: RootState) => state.support)
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const { noticeDetails } = useAppSelector((state: RootState) => state.support);
+  const navigate = useNavigate();
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchAsyncNoticeDetails(id))
-  }, [id])
+    dispatch(fetchAsyncNoticeDetails(id));
+  }, [dispatch, id]);
 
   return (
     <div>
       <div className="py-10">
-        <Title order={1}>{t('app.support.notice')}</Title>
-        <Text>{t('app.support.noticeSubtitle')}</Text>
+        <Title order={1}>{t("app.support.notice")}</Title>
+        <Text>{t("app.support.noticeSubtitle")}</Text>
       </div>
       <Button
         variant="default"
@@ -36,7 +36,7 @@ function NoticeDetail({ t }) {
       </Button>
       <TitleListDetail data={noticeDetails} type="notice" />
     </div>
-  )
+  );
 }
 
-export default withTranslation()(NoticeDetail)
+export default withTranslation()(NoticeDetail);

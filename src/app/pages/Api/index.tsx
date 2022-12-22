@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
-import PageContainer from 'app/components/PageContainer/PageContainer'
-import { withTranslation } from 'react-i18next'
+import React, { useEffect } from "react";
+import PageContainer from "app/components/PageContainer/PageContainer";
+import { withTranslation } from "react-i18next";
 import {
   Accordion,
   Box,
@@ -11,25 +11,25 @@ import {
   Grid,
   Select,
   Stack,
-  Title
-} from '@mantine/core'
-import { useAppDispatch, useAppSelector } from '@redux/hooks'
-import { RootState } from '@redux/store'
-import { useParams } from 'react-router-dom'
-import Spinner from 'app/components/LoadingSpinner/Spinner'
+  Title,
+} from "@mantine/core";
+import { useAppDispatch, useAppSelector } from "@redux/hooks";
+import { RootState } from "@redux/store";
+import { useParams } from "react-router-dom";
+import Spinner from "app/components/LoadingSpinner/Spinner";
 import {
   getApiList,
   getGameList,
   setGameSelected,
-  setTabNameSelected
-} from './slice'
-import ApiDetail from './ApiDetail'
+  setTabNameSelected,
+} from "./slice";
+import ApiDetail from "./ApiDetail";
 
-const useStyles = createStyles(theme => {
+const useStyles = createStyles((theme) => {
   const borderColor =
-    theme.colorScheme === 'dark'
+    theme.colorScheme === "dark"
       ? `${theme.colors.dark[4]}!important`
-      : `${theme.colors.gray[3]}!important`
+      : `${theme.colors.gray[3]}!important`;
   // const bgColor =
   //   theme.colorScheme === 'dark'
   //     ? `#25262b`
@@ -37,71 +37,71 @@ const useStyles = createStyles(theme => {
   return {
     accordionActive: {
       control: {
-        '&[data-active]': {
-          backgroundColor: 'red'
-        }
-      }
+        "&[data-active]": {
+          backgroundColor: "red",
+        },
+      },
     },
     borderBottomText: {
-      borderBottom: `1px solid ${borderColor}`
-    }
-  }
-})
+      borderBottom: `1px solid ${borderColor}`,
+    },
+  };
+});
 
 export function Apis() {
   const { loading, apiList, gameNameList, gameSelected, tabNameSelected } =
-    useAppSelector((state: RootState) => state.apis)
-  const { classes, theme } = useStyles()
-  const dispatch = useAppDispatch()
-  const paramDom = useParams()
+    useAppSelector((state: RootState) => state.apis);
+  const { classes, theme } = useStyles();
+  const dispatch = useAppDispatch();
+  const paramDom = useParams();
 
-  const handleChangeGame = value => {
+  const handleChangeGame = (value) => {
     if (value) {
-      dispatch(setGameSelected(value))
+      dispatch(setGameSelected(value));
     }
-  }
+  };
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController();
     dispatch(
       getGameList({
         params: { page: 0, limit: 0 },
-        signal: controller.signal
+        signal: controller.signal,
       })
-    )
+    );
     return () => {
-      controller.abort()
-    }
-  }, [])
+      controller.abort();
+    };
+  }, [dispatch]);
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController();
     dispatch(
       getApiList({
         params: {
           page: 0,
           limit: 0,
-          gameName: gameSelected.gameName
+          gameName: gameSelected.gameName,
         },
-        signal: controller.signal
+        signal: controller.signal,
       })
-    )
+    );
     return () => {
-      controller.abort()
-    }
-  }, [gameSelected.gameName])
+      controller.abort();
+    };
+  }, [dispatch, gameSelected.gameName]);
 
   useEffect(() => {
     if (paramDom.gameName) {
-      dispatch(setGameSelected(paramDom.gameName))
+      dispatch(setGameSelected(paramDom.gameName));
     }
-  }, [])
+  }, [dispatch, paramDom.gameName]);
 
   return (
     <PageContainer>
       <div className="relative">
         {loading && <Spinner />}
-        <Stack sx={{ padding: '2rem' }}>
+        <Stack sx={{ padding: "2rem" }}>
           <Grid>
             <Col span={3}>
               <Select
@@ -122,15 +122,15 @@ export function Apis() {
                 <Box
                   key={item.tabName}
                   className={
-                    tabNameSelected === item ? 'bg-gray-400 text-white' : ''
+                    tabNameSelected === item ? "bg-gray-400 text-white" : ""
                   }
                   sx={{
-                    borderRadius: '2rem',
-                    color: theme.colorScheme === 'dark' ? 'white' : 'black',
-                    padding: '0.5rem 1.5rem',
-                    margin: '8px',
-                    border: '1px solid grey',
-                    cursor: 'pointer'
+                    borderRadius: "2rem",
+                    color: theme.colorScheme === "dark" ? "white" : "black",
+                    padding: "0.5rem 1.5rem",
+                    margin: "8px",
+                    border: "1px solid grey",
+                    cursor: "pointer",
                   }}
                   onClick={() => dispatch(setTabNameSelected(item))}
                 >
@@ -142,7 +142,7 @@ export function Apis() {
           <Stack>
             {tabNameSelected &&
               tabNameSelected.category2List.length > 0 &&
-              tabNameSelected.category2List.map(item => (
+              tabNameSelected.category2List.map((item) => (
                 <div key={item}>
                   <Title order={4}>{item}</Title>
                   <br />
@@ -153,24 +153,26 @@ export function Apis() {
                     multiple
                     styles={{
                       control: {
-                        '&[data-active]': {
+                        "&[data-active]": {
                           backgroundColor:
-                            theme.colorScheme === 'dark' ? '#25262b' : '#f8f9fa'
-                        }
-                      }
+                            theme.colorScheme === "dark"
+                              ? "#25262b"
+                              : "#f8f9fa",
+                        },
+                      },
                     }}
                   >
                     {item &&
                       apiList &&
                       apiList.length > 0 &&
-                      apiList.map(api => {
+                      apiList.map((api) => {
                         if (
                           api.category2 === item &&
                           api.tabName === tabNameSelected.tabName
                         ) {
-                          return <ApiDetail key={api.apiId} data={api} />
+                          return <ApiDetail key={api.apiId} data={api} />;
                         }
-                        return null
+                        return null;
                       })}
                   </Accordion>
                 </div>
@@ -178,9 +180,9 @@ export function Apis() {
             <br />
             {apiList &&
               apiList.length > 0 &&
-              apiList.map(api => {
+              apiList.map((api) => {
                 if (
-                  api.category2 === 'Uncheck' &&
+                  api.category2 === "Uncheck" &&
                   api.tabName === tabNameSelected.tabName
                 ) {
                   return (
@@ -191,26 +193,26 @@ export function Apis() {
                       multiple
                       styles={{
                         control: {
-                          '&[data-active]': {
+                          "&[data-active]": {
                             backgroundColor:
-                              theme.colorScheme === 'dark'
-                                ? '#25262b'
-                                : '#f8f9fa'
-                          }
-                        }
+                              theme.colorScheme === "dark"
+                                ? "#25262b"
+                                : "#f8f9fa",
+                          },
+                        },
                       }}
                     >
                       <ApiDetail key={api.apiId} data={api} />
                     </Accordion>
-                  )
+                  );
                 }
-                return null
+                return null;
               })}
           </Stack>
         </Stack>
       </div>
     </PageContainer>
-  )
+  );
 }
 
-export default withTranslation()(Apis)
+export default withTranslation()(Apis);
