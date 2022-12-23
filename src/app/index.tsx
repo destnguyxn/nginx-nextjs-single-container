@@ -1,13 +1,13 @@
 // Use global style
-import 'styles/global.scss'
+import "styles/global.scss";
 
-import { withTranslation } from 'react-i18next'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { withTranslation } from "react-i18next";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from "react-helmet-async";
 
-import Landing from 'app/pages/HomePage'
-import NotFoundPage from 'app/components/NotFoundPage'
+import Landing from "app/pages/HomePage";
+import NotFoundPage from "app/components/NotFoundPage";
 import {
   ABOUT,
   API,
@@ -22,37 +22,37 @@ import {
   NOTICE,
   DOCS,
   FAQ_DETAIL,
-  NOTICE_DETAIL
-} from 'common/routes'
-import { NotificationsProvider } from '@mantine/notifications'
-import AppThemeProvider from './theme'
-import AboutPage from './pages/About'
-import Document from './pages/Document'
-import Api from './pages/Api'
-import Forum from './pages/Forum'
-import MyApp from './pages/MyApp'
-import EntryPage from './pages/Entrance'
-import AppAction from './pages/MyApp/Actions'
-import FAQPage from './pages/Support/faq'
-import Notice from './pages/Support/notice'
-import TermsOfServices from './pages/Support/termsOfServices'
-import 'config/axios'
-import Support from './pages/Support'
-import FaqDetail from './pages/Support/faqDetail'
-import NoticeDetail from './pages/Support/noticeDetail'
-import AppDetail from './pages/MyApp/Detail'
-import AppList from './pages/MyApp/List'
-import Application from './pages/Application'
+  NOTICE_DETAIL,
+} from "common/routes";
+import { NotificationsProvider } from "@mantine/notifications";
+import AppThemeProvider from "./theme";
+import AboutPage from "./pages/About";
+import Document from "./pages/Document";
+import Api from "./pages/Api";
+import Forum from "./pages/Forum";
+import MyApp from "./pages/MyApp";
+import EntryPage from "./pages/Entrance";
+import AppAction from "./pages/MyApp/Actions";
+import FAQPage from "./pages/Support/faq";
+import Notice from "./pages/Support/notice";
+import TermsOfServices from "./pages/Support/termsOfServices";
+import "config/axios";
+import Support from "./pages/Support";
+import FaqDetail from "./pages/Support/faqDetail";
+import NoticeDetail from "./pages/Support/noticeDetail";
+import AppDetail from "./pages/MyApp/Detail";
+import AppList from "./pages/MyApp/List";
+import Application from "./pages/Application";
 
 function App({ i18n }) {
   return (
     <AppThemeProvider>
       <NotificationsProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/live-api-openapi-frontweb/frontweb-openapi">
           <Helmet
             titleTemplate="%s - Nexon Developer Center"
             defaultTitle="Nexon Developer Center"
-            htmlAttributes={{ lang: i18n?.language || 'en' }}
+            htmlAttributes={{ lang: i18n?.language || "en" }}
           >
             <meta name="description" content="A Nexon Developer Center " />
           </Helmet>
@@ -94,8 +94,8 @@ function App({ i18n }) {
         </BrowserRouter>
       </NotificationsProvider>
     </AppThemeProvider>
-  )
+  );
 }
 
-export { App }
-export default withTranslation()(App)
+export { App };
+export default withTranslation()(App);
