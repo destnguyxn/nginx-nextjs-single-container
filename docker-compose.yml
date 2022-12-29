@@ -2,7 +2,7 @@ version: '3.7'
 services:
   frontend:
     build: .
-    container_name: ndc_frontend_front
+    container_name: live-api-openapi-frontweb
     environment:
       REACT_APP_BASE_URL: http://3.1.107.165:3000
     ports:
