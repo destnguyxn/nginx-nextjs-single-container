@@ -14,7 +14,7 @@ FROM nginx:alpine
 RUN unlink /var/log/nginx/access.log
 RUN unlink /var/log/nginx/error.log
 # Copy config nginx
-COPY --from=development /app/build /var/www/ndc/html
+COPY --from=development /app/build/* /var/www/live-api-openapi-frontweb/html/live-api-openapi-frontweb/
 COPY --from=development /app/.nginx.conf /etc/nginx/conf.d/default.conf
 
 # File copy for health check
