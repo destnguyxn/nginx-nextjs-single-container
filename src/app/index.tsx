@@ -48,7 +48,7 @@ function App({ i18n }) {
   return (
     <AppThemeProvider>
       <NotificationsProvider>
-        <BrowserRouter basename="/frontweb-openapi">
+        <BrowserRouter basename="/live-api-openapi-frontweb">
           <Helmet
             titleTemplate="%s - Nexon Developer Center"
             defaultTitle="Nexon Developer Center"
