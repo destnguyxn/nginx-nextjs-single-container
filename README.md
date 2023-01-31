@@ -25,6 +25,12 @@ You can easily configure Next js Boilerplate by making a search in the whole pro
 You have access to the whole code source if you need further customization. The provided code is only example for you to start your project. The sky is the limit 🚀.
 
 
+### Convention:
+- Component: UpperCase
+- pages: snake-case
+- function and almost: camelCase
+
+
 ### Notes for workflow:
 - Accept comment for code-text
 - All page/components must have below, for all page translated
