@@ -109,8 +109,18 @@ export const getStaticProps: GetStaticProps = async ({ locale, ...rest }) => {
     />
 </div>
 ```
+ 
+### Commit Message Format
+```shell
+yarn commit
+```
 
-  
+### Deploy to production
+```shell
+$ yarn build
+$ yarn start
+```
+
 ### Git workflow:
 #### Before coding: 
   - Go to Jira and create task to get Task Code
@@ -123,17 +133,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, ...rest }) => {
   - Then pick stash {id} `git stash apply stash@{id}` or `git stash pop` to get and clean up newest stash
   - Resolve conflict if have, then add `git add .`
   - After add, run `yarn commit` to start `cz`. Remember, subject will be the Jira Task Code
- 
-### Commit Message Format
-```shell
-yarn commit
-```
 
-### Deploy to production
-```shell
-$ yarn build
-$ yarn start
-```
 
 ---
 ---
