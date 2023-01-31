@@ -111,11 +111,11 @@ export const getStaticProps: GetStaticProps = async ({ locale, ...rest }) => {
 ```
 
   
- ### Git workflow:
-- #### Before coding: 
+### Git workflow:
+#### Before coding: 
   - Go to Jira and create task to get Task Code
   - Checkout new branch base on Task Code
-- #### Before commit:
+#### Before commit:
   - Check and change/update: `git status`
   - If has any, stash your code `git stash` and pull new change `git pull`
   - After pull, `git stash list` to show list stash. And choose stash {id}
