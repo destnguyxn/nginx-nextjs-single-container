@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 80",
+    "start": "next start -p 3333",
     "export": "next export",
     "build-stats": "cross-env ANALYZE=true yarn build",
     "build-prod": "run-s clean build start",
