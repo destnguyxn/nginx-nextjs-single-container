@@ -5,6 +5,7 @@
 
     - ls -al
     - docker -v
+    - hostnamectl
 
     # set RUNDECK_URL
     - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then RUNDECK_URL="${RUNDECK_LIVE_URL}"; else RUNDECK_URL="${RUNDECK_DEV_URL}"; fi
