@@ -3,7 +3,5 @@ services:
   live-api-openapi-frontweb:
     build: ./
     container_name: live-api-openapi-frontweb
-  nginx:
-    build: ./nginx
     ports:
       - 80:80
