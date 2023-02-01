@@ -1,19 +1,35 @@
-/**  type {import('ts-jest').JestConfigWithTsJest} */
-// eslint-disable-next-line no-undef
-module.exports = {
-  preset: 'ts-jest',
-  coveragePathIgnorePatterns: ['node_modules', 'tests'],
-  transform: {
-    '^.+\\.ts?$': 'ts-jest'
-  },
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+});
+
+const customJestConfig = {
   moduleNameMapper: {
-    ' redux': '<rootDir>/src/config/redux',
-    ' common/(.*)': '<rootDir>/src/common/$1',
-    ' config/(.*)': '<rootDir>/src/config/$1',
-    ' pages/(.*)': '<rootDir>/src/app/pages/$1',
-    ' domain/(.*)': '<rootDir>/src/domain/$1',
-    ' styles/(.*)': '<rootDir>/src/styles/$1',
-    ' utils/(.*)': '<rootDir>/src/utils/$1',
-    'src/(.*)': '<rootDir>/src/$1'
-  }
-}
+    // Handle module aliases (this will be automatically configured for you soon)
+    '^@/(.*)$': '<rootDir>/src/$1',
+
+    '^@/public/(.*)$': '<rootDir>/public/$1',
+  },
+  setupFilesAfterEnv: ['./jest.setup.js'],
+  clearMocks: true,
+  collectCoverage: true,
+  collectCoverageFrom: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    '!./src/**/_*.{js,jsx,ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 10,
+      functions: 10,
+      lines: 10,
+      statements: 10,
+    },
+  },
+  testEnvironment: 'jest-environment-jsdom',
+};
+
+module.exports = createJestConfig(customJestConfig);
