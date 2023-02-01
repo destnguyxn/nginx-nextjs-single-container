@@ -4,6 +4,7 @@
     - echo BRANCH=$CI_COMMIT_REF_NAME
 
     - echo $(ls)
+    - echo $(docker ps)
 
     # set RUNDECK_URL
     - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then RUNDECK_URL="${RUNDECK_LIVE_URL}"; else RUNDECK_URL="${RUNDECK_DEV_URL}"; fi
@@ -171,7 +172,7 @@ deploy-dev:
     - echo $runResult
     - httpStatusCode=$(echo $runResult | sed -E 's/\{.*\}//g')
     - echo $httpStatusCode
-    - echo curl http://checkip.amazonaws.com
+    - curl http://checkip.amazonaws.com
     - >
       if [ $httpStatusCode = "200" ]; then
         echo "Deployment is started successfully"               
