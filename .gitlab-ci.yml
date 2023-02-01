@@ -3,6 +3,8 @@
     - $(aws ecr get-login --no-include-email --region ap-northeast-1)
     - echo BRANCH=$CI_COMMIT_REF_NAME
 
+    - echo $(ls)
+
     # set RUNDECK_URL
     - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then RUNDECK_URL="${RUNDECK_LIVE_URL}"; else RUNDECK_URL="${RUNDECK_DEV_URL}"; fi
     - echo RUNDECK_URL=$RUNDECK_URL
@@ -145,7 +147,7 @@ deploy-dev:
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
               "RESOURCE_TYPE": "deployments",
-              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi",
+              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "CONTAINER_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "IMAGE": "'"$DEPLOY_IMAGE_TAG"'"
             }
@@ -161,7 +163,7 @@ deploy-dev:
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
               "RESOURCE_TYPE": "deployments",
-              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi",
+              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "CONTAINER_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "IMAGE": "'"$DEPLOY_IMAGE_TAG"'"
             }
@@ -169,6 +171,7 @@ deploy-dev:
     - echo $runResult
     - httpStatusCode=$(echo $runResult | sed -E 's/\{.*\}//g')
     - echo $httpStatusCode
+    - echo curl http://checkip.amazonaws.com
     - >
       if [ $httpStatusCode = "200" ]; then
         echo "Deployment is started successfully"               
@@ -195,7 +198,7 @@ create-canary:
             "loglevel":"info",
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
-              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi",
+              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "CONTAINER_IMAGE": "'"$DEPLOY_IMAGE_TAG"'"
             }
       }'
@@ -209,7 +212,7 @@ create-canary:
             "loglevel":"info",
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
-              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi",
+              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "CONTAINER_IMAGE": "'"$DEPLOY_IMAGE_TAG"'"
             }
       }')
@@ -243,7 +246,7 @@ delete-canary:
             "loglevel":"info",
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
-              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi"
+              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'"
             }
       }'
     - >
@@ -256,7 +259,7 @@ delete-canary:
             "loglevel":"info",
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
-              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi"
+              "DEPLOYMENT_NAME": "'"$CURRENT_PROJECT_NAME"'"
             }
       }')
     - echo $runResult
@@ -289,7 +292,7 @@ deploy-live:
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
               "RESOURCE_TYPE": "deployments",
-              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi",
+              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "CONTAINER_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "IMAGE": "'"$DEPLOY_IMAGE_TAG"'"
             }
@@ -305,7 +308,7 @@ deploy-live:
             "options": {
               "NAMESPACE": "'"$CURRENT_PROJECT_NAME"'",
               "RESOURCE_TYPE": "deployments",
-              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'-liveapi",
+              "RESOURCE_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "CONTAINER_NAME": "'"$CURRENT_PROJECT_NAME"'",
               "IMAGE": "'"$DEPLOY_IMAGE_TAG"'"
             }
