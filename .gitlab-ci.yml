@@ -3,7 +3,7 @@
     - $(aws ecr get-login --no-include-email --region ap-northeast-1)
     - echo BRANCH=$CI_COMMIT_REF_NAME
 
-    - $(aws ec2 describe-instances --instance-ids i-0c9c9b44b --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
+    - curl http://checkip.amazonaws.com
     - node -v
     - npm -v
     - docker -v
