@@ -3,10 +3,10 @@
     - $(aws ecr get-login --no-include-email --region ap-northeast-1)
     - echo BRANCH=$CI_COMMIT_REF_NAME
 
-    - echo $(curl aws ec2 describe-instances --instance-ids i-0c9c9b44b --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
-    - echo ${node -v} 
-    - echo ${npm -v} 
-    - echo ${docker -v}
+    - $(aws ec2 describe-instances --instance-ids i-0c9c9b44b --query 'Reservations[*].Instances[*].PublicIpAddress' --output text)
+    - node -v
+    - npm -v
+    - docker -v
 
     # set RUNDECK_URL
     - if [ "$CI_COMMIT_REF_NAME" == "master" ]; then RUNDECK_URL="${RUNDECK_LIVE_URL}"; else RUNDECK_URL="${RUNDECK_DEV_URL}"; fi
