@@ -3,15 +3,18 @@ import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { AppSEO } from '@/components/AppSEO/AppSEO';
+import SectionCard from '@/modules/homepage/SectionCard/SectionCard';
+import SectionWellcome from '@/modules/homepage/SectionWellcome/SectionWellcome';
 
 const Index = () => {
   const theme = useMantineTheme();
+
   return (
     <>
       <AppSEO title={'App Nextjs'} description="Homepage" />
-
-      <div>This is app Nextjs page</div>
-      {theme.other.backgroundBody}
+      {theme.other.textBody}
+      <SectionWellcome />
+      <SectionCard />
     </>
   );
 };
