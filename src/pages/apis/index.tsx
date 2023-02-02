@@ -1,23 +1,15 @@
-import { useMantineTheme } from '@mantine/core';
 import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React from 'react';
 
 import { AppSEO } from '@/components/AppSEO/AppSEO';
-import SectionCard from '@/modules/homepage/SectionCard/SectionCard';
-import SectionWelcome from '@/modules/homepage/SectionWelcome/SectionWelcome';
 
-const Index = () => {
-  const theme = useMantineTheme();
-
+const apis = () => {
   return (
-    <>
+    <div>
       <AppSEO title={'App Nextjs'} description="Homepage" />
-      <div className="mt-20">
-        {theme.other.textBody}
-        <SectionWelcome />
-        <SectionCard />
-      </div>
-    </>
+      This is the APIs page
+    </div>
   );
 };
 
@@ -30,4 +22,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Index;
+export default apis;

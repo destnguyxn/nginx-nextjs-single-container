@@ -4,5 +4,7 @@
   "cancel": "취소",
   "delete": "삭제하기",
   "home": "홈",
-  "about": "소개"
+  "about": "소개",
+  "logIn": "로그인",
+  "logOut": "로그 아웃"
 }

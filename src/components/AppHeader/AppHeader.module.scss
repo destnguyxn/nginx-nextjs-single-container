@@ -1,0 +1,57 @@
+$textNav: #b1b7c4;
+$textNavHover: #FFFFFF;
+
+
+.headerWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  padding: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbarWrapper {
+  ul {
+    display: flex;
+    align-items: center;
+
+    li {
+      padding: 0 15px;
+
+      a {
+        color: $textNav;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px;
+        text-align: center;
+        text-transform: capitalize;
+
+        &:hover {
+          color: $textNavHover;
+          font-weight: 700;
+        }
+
+        &::before {
+          display: block;
+          content: attr(title);
+          font-weight: 700;
+          height: 0;
+          overflow: hidden;
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+
+.activeNav {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+  color: $textNavHover !important;
+  font-weight: 700 !important;
+}
