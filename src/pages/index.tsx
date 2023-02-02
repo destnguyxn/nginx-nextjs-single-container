@@ -4,7 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { AppSEO } from '@/components/AppSEO/AppSEO';
 import SectionCard from '@/modules/homepage/SectionCard/SectionCard';
-import SectionWellcome from '@/modules/homepage/SectionWellcome/SectionWellcome';
+import SectionWelcome from '@/modules/homepage/SectionWelcome/SectionWelcome';
 
 const Index = () => {
   const theme = useMantineTheme();
@@ -13,7 +13,7 @@ const Index = () => {
     <>
       <AppSEO title={'App Nextjs'} description="Homepage" />
       {theme.other.textBody}
-      <SectionWellcome />
+      <SectionWelcome />
       <SectionCard />
     </>
   );
