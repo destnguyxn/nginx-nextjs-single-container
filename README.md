@@ -38,7 +38,7 @@ You have access to the whole code source if you need further customization. The 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common])),
       // Will be passed to the page component as props
     },
   };
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common])),
       fallback: {
         [unstable_serialize(['api', 'pokemons'])]: pokemons,
       },
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, ...rest }) => {
   );
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common])),
       pokemonDetail: pokemonDetail.data,
       fallback: {
         // unstable_serialize() array style key

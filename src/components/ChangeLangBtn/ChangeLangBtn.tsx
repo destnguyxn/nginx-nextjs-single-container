@@ -3,7 +3,7 @@ import { useLocalStorage } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-const ChangeLanguage = () => {
+const ChangeLangBtn = () => {
   const [lang, setLang] = useLocalStorage({
     key: 'lang',
     defaultValue: 'en',
@@ -36,4 +36,4 @@ const ChangeLanguage = () => {
   );
 };
 
-export default ChangeLanguage;
+export default ChangeLangBtn;

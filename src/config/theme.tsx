@@ -3,7 +3,11 @@ import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
 import { NotificationsProvider } from '@mantine/notifications';
 import type { ReactNode } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import type { ColorThemeVar } from '@/share';
+
+import { colorsThemeVar } from './colorsThemeVar';
 
 // https://mantine.dev/theming/theme-object/
 
@@ -18,17 +22,26 @@ export default function AppThemeProvider({
     defaultValue: 'light',
     getInitialValueInEffect: true,
   });
+  const [colorTheme, setColorTheme] = useState<ColorThemeVar>(
+    colorsThemeVar.COLOR_LIGHT
+  );
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
 
     setColorScheme(nextScheme);
+    if (nextScheme === 'dark') setColorTheme(colorsThemeVar.COLOR_DARK);
+    else setColorTheme(colorsThemeVar.COLOR_LIGHT);
   };
 
   // toggle tailwind theme
   useEffect(() => {
     if (colorScheme === 'dark') {
       document.documentElement.classList.add('dark');
-    } else document.documentElement.classList.remove('dark');
+      setColorTheme(colorsThemeVar.COLOR_DARK);
+    } else {
+      document.documentElement.classList.remove('dark');
+      setColorTheme(colorsThemeVar.COLOR_LIGHT);
+    }
   }, [colorScheme]);
 
   return (
@@ -42,19 +55,9 @@ export default function AppThemeProvider({
         inherit
         theme={{
           colorScheme,
-          lineHeight: '1.5',
-          components: {
-            AppShell: {
-              styles: (theme) => ({
-                main: {
-                  backgroundColor:
-                    theme.colorScheme === 'dark'
-                      ? theme.colors.dark[8]
-                      : theme.colors.gray[0],
-                },
-              }),
-            },
-          },
+          fontFamily: "'Noto Sans KR', sans-serif",
+          lineHeight: '22px',
+          other: colorTheme,
         }}
       >
         <NotificationsProvider position="top-right">

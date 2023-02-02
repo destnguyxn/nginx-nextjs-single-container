@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 
-import ChangeLanguage from './ChangeLanguage';
-import ChangeThemeBtn from './ChangeThemeBtn';
+import ChangeThemeBtn from '@/components/ChangeThemeBtn/ChangeThemeBtn';
+
+import ChangeLangBtn from '../ChangeLangBtn/ChangeLangBtn';
 
 const AppHeader = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -34,7 +35,7 @@ const AppHeader = () => {
         </ul>
       </nav>
       <div className="flex">
-        <ChangeLanguage />
+        <ChangeLangBtn />
         <ChangeThemeBtn />
       </div>
     </header>
