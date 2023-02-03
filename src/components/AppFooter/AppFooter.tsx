@@ -1,4 +1,3 @@
-import { useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 
@@ -8,19 +7,9 @@ import footerImg from '@/public/assets/images/footer_nexon.png';
 import { useStyles } from './StyleFooter';
 
 const AppFooter = () => {
-  const { colorScheme } = useMantineColorScheme();
-  const theme = useMantineTheme();
   const { classes } = useStyles();
   return (
-    <footer
-      className={classes.footer}
-      style={{
-        backgroundColor:
-          colorScheme === 'dark'
-            ? theme.other.backgroundFooter
-            : theme.other.backgroundFooter,
-      }}
-    >
+    <footer className={classes.footer}>
       <div className={classes.allContent}>
         <span className={classes.footerText}>
           © NEXON Korea Corporation All Rights Reserved.
