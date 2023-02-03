@@ -1,6 +1,7 @@
 export interface ColorThemeVar {
   textBody: string;
   backgroundBody: string;
+  backgroundFooter: string;
 }
 
 declare module '@mantine/core' {

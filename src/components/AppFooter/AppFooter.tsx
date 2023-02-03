@@ -1,41 +1,43 @@
-import { useMantineColorScheme } from '@mantine/core';
+import { useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 
 import footerImg2 from '@/public/assets/images/footer_neople.png';
 import footerImg from '@/public/assets/images/footer_nexon.png';
 
+import { useStyles } from './StyleFooter';
+
 const AppFooter = () => {
   const { colorScheme } = useMantineColorScheme();
-
+  const theme = useMantineTheme();
+  const { classes } = useStyles();
   return (
     <footer
-      className="w-full bg-[#080A0F]  "
+      className={classes.footer}
       style={{
-        backgroundColor: colorScheme === 'dark' ? '#080A0F' : '#080A0F',
+        backgroundColor:
+          colorScheme === 'dark'
+            ? theme.other.backgroundFooter
+            : theme.other.backgroundFooter,
       }}
     >
-      <div className="center  flex min-h-[120px] items-center justify-center">
-        <span className="py-[1px] px-[2px] text-[12px] font-light ">
+      <div className={classes.allContent}>
+        <span className={classes.footerText}>
           © NEXON Korea Corporation All Rights Reserved.
         </span>
 
-        <div className=" absolute right-[12px] mr-[20px] flex items-center justify-center">
+        <div className={classes.groupImg}>
           <Image
+            className={classes.footerImg}
             src={footerImg}
-            alt="testPic"
-            style={{
-              width: '77px',
-              height: '24px',
-            }}
+            alt="testPic1"
             priority
           />
-          <div className="pb-[4px]">
+          <div className={classes.img2Area}>
             <Image
+              className={classes.footerImg2}
               src={footerImg2}
-              alt="testPic"
-              className="width-[159px] height-[39px] ml-[23px] mt-[-1px]"
-              priority
+              alt="testPic2"
             />
           </div>
         </div>
