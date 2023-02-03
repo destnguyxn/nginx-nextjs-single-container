@@ -4,7 +4,7 @@ import React from 'react';
 import footerImg2 from '@/public/assets/images/footer_neople.png';
 import footerImg from '@/public/assets/images/footer_nexon.png';
 
-import { useStyles } from './StyleFooter';
+import { useStyles } from './styles';
 
 const AppFooter = () => {
   const { classes } = useStyles();

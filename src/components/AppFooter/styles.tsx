@@ -9,6 +9,8 @@ export const useStyles = createStyles((theme) => ({
     fontSize: '12px',
     fontWeight: 300,
     padding: '1px 2px',
+    opacity: 0.5,
+    color: theme.other.textFooter,
   },
   footerImg: {
     width: '77px',
