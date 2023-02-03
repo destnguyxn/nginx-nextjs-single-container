@@ -1,41 +1,44 @@
-import { Box, Text, UnstyledButton } from '@mantine/core';
+import {
+  Box,
+  Text,
+  UnstyledButton,
+  useMantineColorScheme,
+} from '@mantine/core';
 import React from 'react';
+
+import { useStyles } from './styles';
 
 // TODO: replace text style with theme style
 export default function SectionNotice() {
+  const styles = useStyles();
+  const { colorScheme } = useMantineColorScheme();
   return (
-    <Box
-      className="pt-[30px] pb-[29px]"
-      sx={(_theme) => ({
-        backgroundColor: '#121621',
-      })}
-    >
-      <div className="mx-auto flex w-full max-w-[1000px] justify-between  align-middle text-[16px] font-medium leading-[24px] tracking-[-.35px] ">
+    <Box className={styles.classes.wrapper}>
+      <div className={styles.classes.container}>
         <div className="flex items-center gap-[10px]">
-          <Text color="#747A86">{`[공지사항]`}</Text>
+          <Text
+            color={colorScheme ? '#747A86' : '#747A86'}
+          >{`[공지사항]`}</Text>
           <div></div>
-          <Text color="#C6CCD7">8/22(수) API 점검안내</Text>
+          <Text color={colorScheme ? '#C6CCD7' : '#C6CCD7'}>
+            8/22(수) API 점검안내
+          </Text>
           <Box
             className="h-[15px] w-px"
             sx={(_theme) => ({
               backgroundColor: '#292d37',
             })}
           />
-          <Text className="font-light" color="#51555D">
+          <Text
+            className="font-light"
+            color={colorScheme ? '#51555D' : '#51555D'}
+          >
             2022.08.22
           </Text>
         </div>
         <div className="flex items-center gap-[15px]">
           <UnstyledButton
-            sx={(_theme) => ({
-              backgroundColor: '#ffffff1a',
-              border: '1.5px solid #ffffff26',
-              borderRadius: '2px',
-              '&:active': {
-                backgroundColor: '#ffffff26 !important',
-              },
-            })}
-            className="aspect-square w-[22px] "
+            className={`${styles.classes.button} aspect-square w-[22px] `}
           >
             <div className="mx-auto w-fit">
               <svg
@@ -57,15 +60,7 @@ export default function SectionNotice() {
           </UnstyledButton>
 
           <UnstyledButton
-            sx={(_theme) => ({
-              backgroundColor: '#ffffff1a',
-              border: '1.5px solid #ffffff26',
-              borderRadius: '2px',
-              '&:active': {
-                backgroundColor: '#ffffff26 !important',
-              },
-            })}
-            className="aspect-square w-[22px] "
+            className={`${styles.classes.button} aspect-square w-[22px]`}
           >
             <div className="mx-auto w-fit">
               <svg
