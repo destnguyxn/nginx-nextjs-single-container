@@ -3,18 +3,21 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 
-import styles from './MyPageBtn.module.scss';
+import { useStyles } from './styles';
 
 const MyPageBtn = () => {
   const router = useRouter();
+  const styles = useStyles();
   return (
     <Link
       href="/mypage"
-      className={`${styles.myPageBtnWrapper} ${
-        router.pathname.includes('mypage') ? styles.activeMyPage : undefined
+      className={`${styles.classes.myPageBtnWrapper} ${
+        router.pathname.includes('mypage')
+          ? styles.classes.activeMyPage
+          : undefined
       }`}
     >
-      <AiOutlineUser className={styles.colorMyPage} />
+      <AiOutlineUser className={styles.classes.colorMyPage} />
       <span style={{ marginLeft: '2px' }}>MY</span>
     </Link>
   );

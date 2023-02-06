@@ -65,4 +65,30 @@ export const useStyles = createStyles((theme) => ({
       color: '#FFFFFF',
     },
   },
+
+  colorMyPage: {
+    '&:hover': {
+      color: '#FFFFFF',
+    },
+  },
+
+  myPageBtnWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    color: '#B1B7C4',
+    lineHeight: '28px',
+    fontSize: '18px',
+    padding: '2px 12px',
+    '&:hover': {
+      color: '#FFFFFF',
+    },
+  },
+  activeMyPage: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '16px',
+    color: '#FFFFFF',
+    '& .colorMyPage': {
+      color: '#FFFFFF',
+    },
+  },
 }));
