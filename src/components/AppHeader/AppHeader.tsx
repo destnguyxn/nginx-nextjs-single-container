@@ -5,28 +5,30 @@ import React from 'react';
 
 import logo from '@/public/assets/images/logo.svg';
 
-import styles from './AppHeader.module.scss';
 import LoginBtn from './LoginBtn';
 import MyPageBtn from './MyPageBtn';
+import { useStyles } from './styles';
 
 const AppHeader = () => {
-  // const { t } = useTranslation('common');
   const router = useRouter();
+  const styles = useStyles();
 
   return (
-    <header className={styles.headerWrapper}>
+    <header className={styles.classes.headerWrapper}>
       <Link href="/">
         <Image priority src={logo} alt="Nexon Open Api" />
       </Link>
 
-      <nav className={styles.navbarWrapper}>
+      <nav className={styles.classes.navbarWrapper}>
         <ul>
           <li>
             <Link
               href="docs"
               title="Docs"
               className={
-                router.pathname.includes('docs') ? styles.activeNav : undefined
+                router.pathname.includes('docs')
+                  ? styles.classes.activeNav
+                  : undefined
               }
             >
               Docs
@@ -36,7 +38,9 @@ const AppHeader = () => {
             <Link
               href="apis"
               className={
-                router.pathname.includes('apis') ? styles.activeNav : undefined
+                router.pathname.includes('apis')
+                  ? styles.classes.activeNav
+                  : undefined
               }
               title="APIs"
             >
@@ -48,7 +52,7 @@ const AppHeader = () => {
               href="support"
               className={
                 router.pathname.includes('support')
-                  ? styles.activeNav
+                  ? styles.classes.activeNav
                   : undefined
               }
               title="Support"
@@ -60,7 +64,9 @@ const AppHeader = () => {
             <Link
               href="/forum/"
               className={
-                router.pathname.includes('forum') ? styles.activeNav : undefined
+                router.pathname.includes('forum')
+                  ? styles.classes.activeNav
+                  : undefined
               }
               title="Forum"
             >
@@ -71,7 +77,9 @@ const AppHeader = () => {
             <Link
               href="/apps/"
               className={
-                router.pathname.includes('apps') ? styles.activeNav : undefined
+                router.pathname.includes('apps')
+                  ? styles.classes.activeNav
+                  : undefined
               }
               title="Apps"
             >
