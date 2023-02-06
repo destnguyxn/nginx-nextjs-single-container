@@ -27,7 +27,7 @@ const SectionCard = () => {
 
         <Grid.Col span={4} className="min-w-[320px]">
           <Card className={styles.classes.card} withBorder>
-            <Card.Section className={styles.classes.cardSection}>
+            <Card.Section>
               <Image
                 src={Icon2}
                 alt="Norway"
@@ -49,7 +49,7 @@ const SectionCard = () => {
         </Grid.Col>
         <Grid.Col span={4}>
           <Card className={styles.classes.card} withBorder>
-            <Card.Section className={styles.classes.cardSection}>
+            <Card.Section>
               <Image
                 src={Icon1}
                 alt="Norway"
@@ -70,7 +70,7 @@ const SectionCard = () => {
         </Grid.Col>
         <Grid.Col span={4}>
           <Card className={styles.classes.card} withBorder>
-            <Card.Section className={styles.classes.cardSection}>
+            <Card.Section>
               <Image
                 src={Icon3}
                 alt="Norway"

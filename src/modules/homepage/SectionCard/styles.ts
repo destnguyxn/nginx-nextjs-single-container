@@ -33,7 +33,6 @@ const useStyles = createStyles((theme) => {
       borderStyle: 'solid',
       borderColor: '#FFFFFF0D',
       transition: 'transform 0.3s',
-      // borderImage: 'linear-gradient(to top, #ffffff0d, #ffffff26) 1 content-box',
       borderRadius: '5px',
 
       '&:hover': {
@@ -47,7 +46,6 @@ const useStyles = createStyles((theme) => {
       },
     },
     cardTitle: {
-      // fontWeight: 900,
       fontSize: '30px',
       lineHeight: '48px',
       textAlign: 'center',
@@ -79,7 +77,6 @@ const useStyles = createStyles((theme) => {
       backgroundSize: '100% auto',
       padding: '144px',
     },
-    cardSection: {},
   };
 });
 
