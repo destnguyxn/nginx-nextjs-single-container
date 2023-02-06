@@ -18,7 +18,7 @@ const MyPageBtn = () => {
       }`}
     >
       <AiOutlineUser className={styles.classes.colorMyPage} />
-      <span style={{ marginLeft: '2px' }}>MY</span>
+      <span className="ml-[2px]">MY</span>
     </Link>
   );
 };

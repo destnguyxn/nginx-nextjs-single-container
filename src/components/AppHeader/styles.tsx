@@ -61,7 +61,7 @@ export const useStyles = createStyles((theme) => ({
     lineHeight: '22px',
     padding: '10px 18px',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      backgroundColor: '#FFFFFF33',
       color: '#FFFFFF',
     },
   },
@@ -84,7 +84,7 @@ export const useStyles = createStyles((theme) => ({
     },
   },
   activeMyPage: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: '#FFFFFF1a',
     borderRadius: '16px',
     color: '#FFFFFF',
     '& .colorMyPage': {
