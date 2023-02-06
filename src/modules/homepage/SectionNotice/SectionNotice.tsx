@@ -14,8 +14,9 @@ export default function SectionNotice() {
           <Text className={styles.classes.content}>8/22(수) API 점검안내</Text>
           <Box
             className="h-[15px] w-px"
-            sx={(_theme) => ({
-              backgroundColor: '#292d37',
+            sx={(theme) => ({
+              backgroundColor:
+                theme.colorScheme === 'dark' ? '#292d37' : '#292d37',
             })}
           />
           <Text className={styles.classes.date}>2022.08.22</Text>
