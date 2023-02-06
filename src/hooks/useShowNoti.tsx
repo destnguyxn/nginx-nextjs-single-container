@@ -1,5 +1,5 @@
 import { showNotification } from '@mantine/notifications';
-import { IconCheck, IconX } from '@tabler/icons';
+import { FiCheck, FiX } from 'react-icons/fi';
 
 export function showSuccess(statusText: string) {
   return showNotification({
@@ -7,7 +7,7 @@ export function showSuccess(statusText: string) {
     color: 'teal',
     title: 'Success',
     message: statusText,
-    icon: <IconCheck size={16} />,
+    icon: <FiCheck size={16} />,
     autoClose: 2000,
   });
 }
@@ -17,7 +17,7 @@ export function showError(statusText: string) {
     color: 'red',
     title: 'Error',
     message: statusText,
-    icon: <IconX size={16} />,
+    icon: <FiX size={16} />,
     autoClose: 2000,
   });
 }

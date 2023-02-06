@@ -1,42 +1,101 @@
-import { useMantineColorScheme } from '@mantine/core';
+import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import React from 'react';
 
-import ChangeThemeBtn from '@/components/ChangeThemeBtn/ChangeThemeBtn';
+import logo from '@/public/assets/images/logo.svg';
 
-import ChangeLangBtn from '../ChangeLangBtn/ChangeLangBtn';
+import LoginBtn from './LoginBtn';
+import MyPageBtn from './MyPageBtn';
+import { useStyles } from './styles';
 
 const AppHeader = () => {
-  const { colorScheme } = useMantineColorScheme();
-  const { t } = useTranslation('common');
+  const router = useRouter();
+  const styles = useStyles();
 
   return (
-    <header
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '1rem',
-        backgroundColor: colorScheme === 'dark' ? '#141517' : '#F8F9FA',
-      }}
-    >
-      <nav>
-        <ul className="flex flex-wrap text-xl">
-          <li className="mr-6">
-            <Link href="/">{t('home')}</Link>
+    <header className={styles.classes.headerWrapper}>
+      <Link href="/">
+        <Image priority src={logo} alt="Nexon Open Api" />
+      </Link>
+
+      <nav className={styles.classes.navbarWrapper}>
+        <ul>
+          <li>
+            <Link
+              href="docs"
+              title="Docs"
+              className={
+                router.pathname.includes('docs')
+                  ? styles.classes.activeNav
+                  : undefined
+              }
+            >
+              Docs
+            </Link>
           </li>
-          <li className="mr-6">
-            <Link href="/pokemons/">Pokemons</Link>
+          <li>
+            <Link
+              href="apis"
+              className={
+                router.pathname.includes('apis')
+                  ? styles.classes.activeNav
+                  : undefined
+              }
+              title="APIs"
+            >
+              APIs
+            </Link>
           </li>
-          <li className="mr-6">
-            <Link href="/page2/">Page2</Link>
+          <li>
+            <Link
+              href="support"
+              className={
+                router.pathname.includes('support')
+                  ? styles.classes.activeNav
+                  : undefined
+              }
+              title="Support"
+            >
+              Support
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/forum/"
+              className={
+                router.pathname.includes('forum')
+                  ? styles.classes.activeNav
+                  : undefined
+              }
+              title="Forum"
+            >
+              Forum
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/apps/"
+              className={
+                router.pathname.includes('apps')
+                  ? styles.classes.activeNav
+                  : undefined
+              }
+              title="Apps"
+            >
+              Apps
+            </Link>
           </li>
         </ul>
       </nav>
-      <div className="flex">
-        <ChangeLangBtn />
-        <ChangeThemeBtn />
+
+      <div className="flex items-center">
+        <div className="mx-[15px]">
+          <MyPageBtn />
+        </div>
+        <div className="ml-[15px]">
+          <LoginBtn />
+        </div>
       </div>
     </header>
   );
