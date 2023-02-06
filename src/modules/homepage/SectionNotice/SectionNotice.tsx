@@ -1,9 +1,4 @@
-import {
-  Box,
-  Text,
-  UnstyledButton,
-  useMantineColorScheme,
-} from '@mantine/core';
+import { Box, Text, UnstyledButton } from '@mantine/core';
 import React from 'react';
 
 import { useStyles } from './styles';
@@ -11,30 +6,21 @@ import { useStyles } from './styles';
 // TODO: replace text style with theme style
 export default function SectionNotice() {
   const styles = useStyles();
-  const { colorScheme } = useMantineColorScheme();
+  // const { colorScheme } = useMantineColorScheme();
   return (
     <Box className={styles.classes.wrapper}>
       <div className={styles.classes.container}>
         <div className="flex items-center gap-[10px]">
-          <Text
-            color={colorScheme ? '#747A86' : '#747A86'}
-          >{`[공지사항]`}</Text>
+          <Text className={styles.classes.label}>{`[공지사항]`}</Text>
           <div></div>
-          <Text color={colorScheme ? '#C6CCD7' : '#C6CCD7'}>
-            8/22(수) API 점검안내
-          </Text>
+          <Text className={styles.classes.content}>8/22(수) API 점검안내</Text>
           <Box
             className="h-[15px] w-px"
             sx={(_theme) => ({
               backgroundColor: '#292d37',
             })}
           />
-          <Text
-            className="font-light"
-            color={colorScheme ? '#51555D' : '#51555D'}
-          >
-            2022.08.22
-          </Text>
+          <Text className={styles.classes.date}>2022.08.22</Text>
         </div>
         <div className="flex items-center gap-[15px]">
           <UnstyledButton
@@ -51,9 +37,9 @@ export default function SectionNotice() {
               >
                 <path
                   d="M7 1L2 6.00054L7 11"
-                  stroke="#A1A6AF"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>
@@ -68,14 +54,16 @@ export default function SectionNotice() {
                 width="8"
                 height="12"
                 viewBox="0 0 8 12"
+                x="30px"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M1 11L6 5.99946L1 0.999999"
-                  stroke="#A1A6AF"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  x="3px"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>
