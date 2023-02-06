@@ -3,10 +3,8 @@ import React from 'react';
 
 import { useStyles } from './styles';
 
-// TODO: replace text style with theme style
 export default function SectionNotice() {
   const styles = useStyles();
-  // const { colorScheme } = useMantineColorScheme();
   return (
     <Box className={styles.classes.wrapper}>
       <div className={styles.classes.container}>
@@ -54,7 +52,6 @@ export default function SectionNotice() {
                 width="8"
                 height="12"
                 viewBox="0 0 8 12"
-                x="30px"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -62,7 +59,6 @@ export default function SectionNotice() {
                   d="M1 11L6 5.99946L1 0.999999"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  x="3px"
                   strokeLinecap="round"
                 />
               </svg>
