@@ -1,13 +1,13 @@
-import { useMantineTheme } from '@mantine/core';
-import type { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useMantineTheme } from '@mantine/core'
+import type { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { AppSEO } from '@/components/AppSEO/AppSEO';
-import SectionCard from '@/modules/homepage/SectionCard/SectionCard';
-import SectionWelcome from '@/modules/homepage/SectionWelcome/SectionWelcome';
+import { AppSEO } from '@/components/AppSEO/AppSEO'
+import SectionCard from '@/modules/homepage/SectionCard'
+import SectionWelcome from '@/modules/homepage/SectionWelcome/SectionWelcome'
 
 const Index = () => {
-  const theme = useMantineTheme();
+  const theme = useMantineTheme()
 
   return (
     <>
@@ -16,16 +16,16 @@ const Index = () => {
       <SectionWelcome />
       <SectionCard />
     </>
-  );
-};
+  )
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? 'en', ['common']))
       // Will be passed to the page component as props
-    },
-  };
-};
+    }
+  }
+}
 
-export default Index;
+export default Index

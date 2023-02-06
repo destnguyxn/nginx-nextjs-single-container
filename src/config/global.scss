@@ -4,6 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: KlavikaNX;
+  //src: url(../../public/assets/fonts/klavika-bold-italic.otf) format("opentype");
+  //src: url(../../public/assets/fonts/klavika-bold.otf) format("opentype");
+  // src: url(../../public/assets/fonts/klavika-light-italic.otf) format("opentype");
+  // src: url(../../public/assets/fonts/klavika-light.otf) format("opentype");
+  // src: url(../../public/assets/fonts/klavika-medium-italic.otf) format("opentype");
+  src: url(../../public/assets/fonts/klavika-medium.otf) format("opentype");
+  // src: url(../../public/assets/fonts/klavika-regular-italic.otf) format("opentype");
+}
+
+
 /* Box sizing rules */
 *,
 *::before,

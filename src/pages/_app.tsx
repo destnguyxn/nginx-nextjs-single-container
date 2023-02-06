@@ -1,12 +1,12 @@
-import '@/config/global.scss';
+import '@/config/global.scss'
 
-import type { AppProps } from 'next/app';
-import { appWithTranslation } from 'next-i18next';
-import { SWRConfig } from 'swr';
+import type { AppProps } from 'next/app'
+import { appWithTranslation } from 'next-i18next'
+import { SWRConfig } from 'swr'
 
-import { AppLayout } from '@/components/AppLayout/AppLayout';
-import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
-import AppThemeProvider from '@/config/theme';
+import { AppLayout } from '@/components/AppLayout/AppLayout'
+import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary'
+import AppThemeProvider from '@/config/theme'
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <SWRConfig>
@@ -18,6 +18,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       </ErrorBoundary>
     </AppThemeProvider>
   </SWRConfig>
-);
+)
 
-export default appWithTranslation(MyApp);
+export default appWithTranslation(MyApp)
