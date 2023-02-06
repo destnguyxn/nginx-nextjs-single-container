@@ -4,5 +4,7 @@
   "cancel": "Cancel",
   "delete": "Delete",
   "home": "Home",
-  "about": "About"
+  "about": "About",
+  "logIn": "Log in",
+  "logOut": "Log out"
 }

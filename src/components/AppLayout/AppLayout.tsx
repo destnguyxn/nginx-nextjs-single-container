@@ -1,28 +1,33 @@
-import { useMantineTheme } from '@mantine/core';
 import type { ReactNode } from 'react';
 
 import AppFooter from '../AppFooter/AppFooter';
 import AppHeader from '../AppHeader/AppHeader';
-import styles from './AppLayout.module.scss';
+import ChangeLangBtn from '../ChangeLangBtn/ChangeLangBtn';
+import ChangeThemeBtn from '../ChangeThemeBtn/ChangeThemeBtn';
 
 type IAppLayoutProps = {
   children: ReactNode;
 };
 
 const AppLayout = (props: IAppLayoutProps) => {
-  const theme = useMantineTheme();
   return (
-    <div className={`${styles.appWrapper} w-full antialiased`}>
+    <div className="flex min-h-screen w-full flex-col antialiased">
       <AppHeader />
-      <main
-        className="flex-1 p-4"
+      {/* This will remove when have design UI */}
+      <div
         style={{
-          backgroundColor: theme.other.backgroundBody,
-          color: theme.other.textBody,
+          position: 'fixed',
+          bottom: '130px',
+          right: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
         }}
       >
-        {props.children}
-      </main>
+        <ChangeLangBtn />
+        <ChangeThemeBtn />
+      </div>
+      <main className="flex-1">{props.children}</main>
       <AppFooter />
     </div>
   );

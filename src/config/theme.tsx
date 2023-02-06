@@ -5,8 +5,7 @@ import { NotificationsProvider } from '@mantine/notifications';
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
-import type { ColorThemeVar } from '@/share';
-
+import type { ColorThemeVar } from './colorsThemeVar';
 import { colorsThemeVar } from './colorsThemeVar';
 
 // https://mantine.dev/theming/theme-object/
@@ -55,9 +54,18 @@ export default function AppThemeProvider({
         inherit
         theme={{
           colorScheme,
-          fontFamily: "'Noto Sans KR', sans-serif",
-          lineHeight: '22px',
           other: colorTheme,
+          globalStyles: () => ({
+            '*, *::before, *::after': {
+              boxSizing: 'border-box',
+            },
+
+            body: {
+              fontFamily: "'Noto Sans KR', sans-serif",
+              backgroundColor: colorTheme.backgroundBody,
+              color: colorTheme.textBody,
+            },
+          }),
         }}
       >
         <NotificationsProvider position="top-right">

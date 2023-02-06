@@ -1,16 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})
+  enabled: process.env.ANALYZE === 'true',
+});
 
-const { i18n } = require('./next-i18next.config')
+const { i18n } = require('./next-i18next.config');
 
 module.exports = withBundleAnalyzer({
   eslint: {
-    dirs: ['.']
+    dirs: ['.'],
   },
   poweredByHeader: false,
-  trailingSlash: true,
+  trailingSlash: false,
   basePath: '',
   // The starter code load resources from `public` folder with `router.basePath` in React components.
   // So, the source code is "basePath-ready".
@@ -23,14 +23,14 @@ module.exports = withBundleAnalyzer({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'nxas.nexon.com'
+        hostname: 'nxas.nexon.com',
         // port: '',
         // pathname: '/account123/**',
       },
       {
         protocol: 'https',
-        hostname: 'via.placeholder.com'
-      }
-    ]
-  }
-})
+        hostname: 'via.placeholder.com',
+      },
+    ],
+  },
+});

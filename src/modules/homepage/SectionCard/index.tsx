@@ -11,15 +11,15 @@ import useStyles from './styles';
 const SectionCard = () => {
   const styles = useStyles();
   return (
-    <Center>
+    <Center className={styles.classes.sectionCardContainer}>
       <Grid className="w-[1000px]">
-        <Grid.Col className="text-center" span={12}>
+        <Grid.Col className="p-0 text-center" span={12}>
           <Text className={styles.classes.firstTitle}>
-            넥슨 <strong className={styles.classes.openAPI}>Open API</strong>를
+            넥슨 <span className={styles.classes.openAPI}>Open API</span>를
             활용하여 멋진 경험에 도전해보세요.
           </Text>
         </Grid.Col>
-        <Grid.Col className="text-center" span={12}>
+        <Grid.Col className="p-0 text-center" span={12}>
           <Text className={styles.classes.secondTitle}>
             넥슨 Open API를 활용하여 멋진 경험에 도전해보세요.
           </Text>

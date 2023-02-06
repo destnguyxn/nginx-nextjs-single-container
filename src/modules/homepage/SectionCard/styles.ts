@@ -1,16 +1,19 @@
 import { createStyles } from '@mantine/core';
 
+import bg2_home_dark from '@/public/assets/images/bg2_home_dark.png';
+
 const useStyles = createStyles((theme) => {
   const darkMode = theme.colorScheme === 'dark';
 
   return {
     openAPI: {
       color: darkMode ? 'white' : 'black',
+      fontWeight: 700,
     },
     firstTitle: {
+      marginBottom: '11px',
       fontWeight: 400,
       fontSize: '40px',
-      marginBottom: '30px',
       color: darkMode ? '#BEBFC2' : '#868E96',
     },
     secondTitle: {
@@ -18,6 +21,7 @@ const useStyles = createStyles((theme) => {
       fontSize: '26px',
       marginBottom: '70px',
       color: darkMode ? '#BEBFC2' : '#868E96',
+      lineHeight: '60px',
     },
     card: {
       height: '320px',
@@ -28,16 +32,18 @@ const useStyles = createStyles((theme) => {
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: '#FFFFFF0D',
-      transition: 'margin-top 0.3s',
+      transition: 'transform 0.3s',
       // borderImage: 'linear-gradient(to top, #ffffff0d, #ffffff26) 1 content-box',
       borderRadius: '5px',
 
       '&:hover': {
+        transform: 'translateY(-30px)',
         borderWidth: '2px',
         borderStyle: 'solid',
         borderColor: '#255DEC',
-        marginTop: '-30px',
         cursor: 'pointer',
+        transitionDuration: '300ms',
+        transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
     cardTitle: {
@@ -66,6 +72,12 @@ const useStyles = createStyles((theme) => {
       textAlign: 'center',
       alignItems: 'center',
       margin: '0 34px 32px 34px',
+    },
+    sectionCardContainer: {
+      backgroundImage: `url(${bg2_home_dark.src})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% auto',
+      padding: '144px',
     },
     cardSection: {},
   };

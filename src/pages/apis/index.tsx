@@ -1,19 +1,15 @@
 import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React from 'react';
 
 import { AppSEO } from '@/components/AppSEO/AppSEO';
-import SectionCard from '@/modules/homepage/SectionCard';
-import SectionNotice from '@/modules/homepage/SectionNotice/SectionNotice';
-import SectionWelcome from '@/modules/homepage/SectionWelcome/SectionWelcome';
 
-const Index = () => {
+const apis = () => {
   return (
-    <>
+    <div>
       <AppSEO title={'App Nextjs'} description="Homepage" />
-      <SectionWelcome />
-      <SectionCard />
-      <SectionNotice />
-    </>
+      This is the APIs page
+    </div>
   );
 };
 
@@ -26,4 +22,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default Index;
+export default apis;
