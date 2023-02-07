@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 
 import AppFooter from '../AppFooter/AppFooter';
 import AppHeader from '../AppHeader/AppHeader';
-import ChangeLangBtn from '../ChangeLangBtn/ChangeLangBtn';
-import ChangeThemeBtn from '../ChangeThemeBtn/ChangeThemeBtn';
+import ChangeLangBtn from '../Button/ChangeLangBtn/ChangeLangBtn';
+import ChangeThemeBtn from '../Button/ChangeThemeBtn/ChangeThemeBtn';
 
 type IAppLayoutProps = {
   children: ReactNode;
@@ -11,7 +11,7 @@ type IAppLayoutProps = {
 
 const AppLayout = (props: IAppLayoutProps) => {
   return (
-    <div className="flex min-h-screen w-full flex-col antialiased">
+    <div className=" flex min-h-screen w-full  flex-col antialiased">
       <AppHeader />
       {/* This will remove when have design UI */}
       <div
