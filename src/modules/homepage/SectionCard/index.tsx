@@ -37,11 +37,7 @@ const SectionCard = () => {
 
             <Text className={styles.classes.cardTitle}>Docs</Text>
 
-            <Text
-              className={styles.classes.cardContent}
-              color="dimmed"
-              lineClamp={2}
-            >
+            <Text className={styles.classes.cardContent} lineClamp={2}>
               Docs를 읽고 넥슨의 <br />
               Open API에 대해 알아보세요.
             </Text>
@@ -59,11 +55,7 @@ const SectionCard = () => {
 
             <Text className={styles.classes.cardTitle}>APIs</Text>
 
-            <Text
-              className={styles.classes.cardContent}
-              color="dimmed"
-              lineClamp={2}
-            >
+            <Text className={styles.classes.cardContent} lineClamp={2}>
               API기능을 확인해보고, <br /> 자유롭게 개발해보세요.
             </Text>
           </Card>
@@ -80,11 +72,7 @@ const SectionCard = () => {
 
             <Text className={styles.classes.cardTitle}>Forum</Text>
 
-            <Text
-              className={styles.classes.cardContent}
-              color="dimmed"
-              lineClamp={2}
-            >
+            <Text className={styles.classes.cardContent} lineClamp={2}>
               자신의 서비스를 소개하거나 다양한 의견을 나눠보세요.
             </Text>
           </Card>

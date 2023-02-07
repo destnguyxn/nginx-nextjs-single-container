@@ -69,7 +69,8 @@ const useStyles = createStyles((theme) => {
       lineHeight: '28px',
       textAlign: 'center',
       alignItems: 'center',
-      margin: '0 34px 32px 34px',
+      margin: '0 30px 32px 30px',
+      color: '#B3BAC5',
     },
     sectionCardContainer: {
       backgroundImage: `url(${bg2_home_dark.src})`,
