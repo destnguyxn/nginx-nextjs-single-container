@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: KlavikaNX;
+  src: url(../../public/assets/fonts/klavika-medium.otf) format("opentype");
+}
+
+
 /* Box sizing rules */
 *,
 *::before,

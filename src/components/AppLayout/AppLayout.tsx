@@ -16,7 +16,7 @@ const AppLayout = (props: IAppLayoutProps) => {
       {/* This will remove when have design UI */}
       <div
         style={{
-          position: 'absolute',
+          position: 'fixed',
           bottom: '130px',
           right: '16px',
           display: 'flex',

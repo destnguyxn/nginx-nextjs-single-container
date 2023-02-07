@@ -31,5 +31,5 @@ const COLOR_DARK: ColorThemeVar = {
 
 export const colorsThemeVar = {
   COLOR_LIGHT,
-  COLOR_DARK,
-};
+  COLOR_DARK
+}
