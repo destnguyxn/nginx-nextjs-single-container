@@ -25,8 +25,13 @@ export const useStyles = createStyles(() => ({
       height: '64px',
       width: '176px',
       borderRadius: '50px',
-      backgroundImage:
-        'linear-gradient(rgba(255, 255, 255, 0.5) 0%, rgba(117, 131, 255, 0.28) 100%)',
+      background:
+        'radial-gradient(118.75% 118.75% at 50% 0%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%)',
+
+      '&:hover': {
+        background:
+          'radial-gradient(188.28% 188.28% at 50% 0%, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.1) 100%)',
+      },
     },
   },
   imageContainer: {
