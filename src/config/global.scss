@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
+@import './text.scss';
 // @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -29,6 +29,10 @@ blockquote,
 dl,
 dd {
   margin: 0;
+}
+
+.mantine-Text-root{
+  font-family: inherit;;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */

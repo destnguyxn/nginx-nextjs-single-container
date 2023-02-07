@@ -55,13 +55,13 @@ export default function AppThemeProvider({
         theme={{
           colorScheme,
           other: colorTheme,
+          fontFamily: "'Noto Sans KR', sans-serif",
           globalStyles: () => ({
             '*, *::before, *::after': {
               boxSizing: 'border-box',
             },
 
             body: {
-              fontFamily: "'Noto Sans KR', sans-serif",
               backgroundColor: colorTheme.backgroundBody,
               color: colorTheme.textBody,
             },
