@@ -1,11 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+/* eslint-disable global-require */
+const isNotProduction = process.env.NODE_ENV !== 'production';
 
 const { i18n } = require('./next-i18next.config');
 
-module.exports = withBundleAnalyzer({
+let config = {
   eslint: {
     dirs: ['.'],
   },
@@ -33,4 +31,15 @@ module.exports = withBundleAnalyzer({
       },
     ],
   },
-});
+  enabled: process.env.ANALYZE === 'true',
+};
+
+if (isNotProduction) {
+  /* eslint-disable import/no-extraneous-dependencies */
+  const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  });
+  config = withBundleAnalyzer(config);
+}
+
+module.exports = config;
