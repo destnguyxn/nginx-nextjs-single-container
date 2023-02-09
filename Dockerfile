@@ -39,10 +39,10 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/
 
 COPY package.json next.config.js next-i18next.config.js .env* ./
 COPY --from=builder /usr/app/public ./public
-COPY --from=builder /usr/app/out ./out
+COPY --from=builder /usr/app/_next ./_next
 COPY --from=builder /usr/app/node_modules ./node_modules
 # File copy for health check
-COPY --from=builder /usr/app/healthy ./healthy
+COPY --from=builder /usr/app/healthy /tmp/healthy
 EXPOSE 80
 # supervisor base configuration
 ADD nginx/supervisor.conf /etc/supervisor.conf

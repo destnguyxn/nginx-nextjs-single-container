@@ -9,7 +9,7 @@
     "export": "next export",
     "build-stats": "cross-env ANALYZE=true yarn build",
     "build-prod": "run-s clean build start",
-    "clean": "rimraf .next out",
+    "clean": "rimraf .next _next",
     "lint": "next lint",
     "format": "next lint --fix && prettier **/*.{json,yaml} --write",
     "check-types": "tsc --noEmit --pretty",
