@@ -7,7 +7,7 @@ const useStyles = createStyles((theme) => {
 
   return {
     openAPI: {
-      color: darkMode ? 'white' : 'black',
+      color: darkMode ? '#FFFFFF' : '#000000',
       fontWeight: 700,
     },
     firstTitle: {
@@ -51,10 +51,9 @@ const useStyles = createStyles((theme) => {
       textAlign: 'center',
       fontFamily: 'KlavikaNX',
       marginBottom: '6px',
-      color: darkMode ? 'white' : 'black',
+      color: darkMode ? '#FFFFFF' : '#000000',
     },
     cardImage: {
-      height: '103px',
       marginTop: '50px',
       display: 'block',
       marginLeft: 'auto',
@@ -63,7 +62,7 @@ const useStyles = createStyles((theme) => {
       objectFit: 'none',
     },
     cardContent: {
-      fontFamily: 'Noto Sans KR',
+      fontFamily: `"Noto Sans KR", sans-serif`,
       fontWeight: 400,
       fontSize: '18px',
       lineHeight: '28px',
@@ -76,7 +75,7 @@ const useStyles = createStyles((theme) => {
       backgroundImage: `url(${bg2_home_dark.src})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: '100% auto',
-      padding: '144px',
+      padding: '144px 0',
     },
   };
 });

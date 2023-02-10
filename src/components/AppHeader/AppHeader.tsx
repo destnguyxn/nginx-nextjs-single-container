@@ -19,7 +19,7 @@ const AppHeader = () => {
         <Image priority src={logo} alt="Nexon Open Api" />
       </Link>
 
-      <nav className={styles.classes.navbarWrapper}>
+      <nav className={`${styles.classes.navbarWrapper}`}>
         <ul>
           <li>
             <Link
@@ -90,7 +90,7 @@ const AppHeader = () => {
       </nav>
 
       <div className="flex items-center">
-        <div className="mx-[15px]">
+        <div className="mr-[15px]">
           <MyPageBtn />
         </div>
         <div className="ml-[15px]">

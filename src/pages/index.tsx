@@ -9,9 +9,16 @@ import SectionWelcome from '@/modules/homepage/SectionWelcome/SectionWelcome';
 const Index = () => {
   return (
     <>
-      <AppSEO title={'App Nextjs'} description="Homepage" />
-      <SectionWelcome />
-      <SectionCard />
+      <AppSEO title={'Home'} description="Homepage" />
+      <div className="homeSection">
+        <SectionWelcome />
+        <br />
+        <br />
+        <br />
+        <br />
+        <SectionCard />
+      </div>
+
       <SectionNotice />
     </>
   );

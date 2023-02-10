@@ -51,6 +51,7 @@ const AppSEO = (props: IAppSEOProps) => {
         title={props.title || appSEOConfig.title}
         description={props.description || appSEOConfig.description}
         canonical={props.canonical || appSEOConfig.canonical}
+        titleTemplate={`%s | ${appSEOConfig.site_name}`}
         openGraph={{
           title: props.title || appSEOConfig.title,
           description: props.description || appSEOConfig.description,

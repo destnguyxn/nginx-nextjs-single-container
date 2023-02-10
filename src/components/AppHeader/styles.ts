@@ -11,12 +11,17 @@ export const useStyles = createStyles((theme) => ({
     top: '0',
     left: '0',
     width: '100%',
+    zIndex: 10,
   },
 
   navbarWrapper: {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
     ul: {
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
       li: {
         padding: '0 15px',
         a: {

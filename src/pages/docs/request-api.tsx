@@ -4,16 +4,15 @@ import React from 'react';
 
 import DocsLayout from '@/modules/docs/DocsLayout/DocsLayout';
 
-const docs = () => {
+const requestApi = () => {
   return (
     <>
       <DocsLayout>
-        <div>This is introduction docs</div>
+        <div>This is Api docs</div>
       </DocsLayout>
     </>
   );
 };
-
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
@@ -23,4 +22,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default docs;
+export default requestApi;

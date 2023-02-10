@@ -11,7 +11,7 @@ import useStyles from './styles';
 const SectionCard = () => {
   const styles = useStyles();
   return (
-    <Center className={styles.classes.sectionCardContainer}>
+    <Center className={`${styles.classes.sectionCardContainer}`}>
       <Grid className="w-[1000px]">
         <Grid.Col className="p-0 text-center" span={12}>
           <Text className={styles.classes.firstTitle}>
@@ -32,6 +32,8 @@ const SectionCard = () => {
                 src={Icon2}
                 alt="Norway"
                 className={styles.classes.cardImage}
+                width={61}
+                height={97}
               />
             </Card.Section>
 
@@ -50,6 +52,8 @@ const SectionCard = () => {
                 src={Icon1}
                 alt="Norway"
                 className={styles.classes.cardImage}
+                width={74}
+                height={101}
               />
             </Card.Section>
 
@@ -67,6 +71,8 @@ const SectionCard = () => {
                 src={Icon3}
                 alt="Norway"
                 className={styles.classes.cardImage}
+                width={85}
+                height={102}
               />
             </Card.Section>
 
