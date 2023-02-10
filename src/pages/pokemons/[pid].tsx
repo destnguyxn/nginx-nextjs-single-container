@@ -1,4 +1,4 @@
-import type { GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
@@ -9,6 +9,10 @@ import { getPokemons } from '@/modules/pokemons/services';
 
 type Props = {
   pokemonDetail: any;
+};
+
+type StaticPathWithLocale = GetStaticPaths & {
+  locales: string[];
 };
 
 const PostDetail = (props: Props) => {
@@ -30,7 +34,7 @@ const PostDetail = (props: Props) => {
   );
 };
 
-export async function getStaticPaths({ locales }: any) {
+export async function getStaticPaths({ locales }: StaticPathWithLocale) {
   const data = await getPokemons();
   const ids = data.map((post: any) => post.id);
   const paths = ids

@@ -9,7 +9,7 @@ let config = {
   },
   poweredByHeader: false,
   trailingSlash: true,
-  basePath: '/live-api-openapi-frontweb',
+  basePath: '',
   // The starter code load resources from `public` folder with `router.basePath` in React components.
   // So, the source code is "basePath-ready".
   // You can remove `basePath` if you don't need it.
@@ -19,7 +19,7 @@ let config = {
   distDir: '_next',
   assetPrefix: isNotProduction ? undefined : '/live-api-openapi-frontweb',
   images: {
-    path: '/live-api-openapi-frontweb/_next/image',
+    path: '/_next/image',
   },
 };
 

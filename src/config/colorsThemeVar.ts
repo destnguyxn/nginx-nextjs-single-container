@@ -11,7 +11,7 @@ export interface ColorThemeVar {
 
 const COLOR_LIGHT: ColorThemeVar = {
   textBody: "#000",
-  backgroundBody: "whitesmoke",
+  backgroundBody: "#F5F5F5",
   backgroundFooter: "#080A0F",
   textFooter: "#FFFFFF",
   textNav: "#FFFFFF",

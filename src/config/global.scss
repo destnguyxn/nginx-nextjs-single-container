@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-@import './text.scss';
+
 // @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: KlavikaNX;
-  src: url(../../public/assets/fonts/klavika-medium.otf) format("opentype");
+  src: url("../../public/assets/fonts/klavika-medium.otf") format("opentype");
 }
+
+@import './text.scss';
 
 
 /* Box sizing rules */
@@ -31,10 +33,6 @@ dd {
   margin: 0;
 }
 
-.mantine-Text-root{
-  font-family: inherit;;
-}
-
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul,
 ol {
@@ -49,7 +47,9 @@ html:focus-within {
 }
 
 /* Set core body defaults */
-html, body, #__next {
+html,
+body,
+#__next {
   height: 100%;
 }
 
@@ -66,7 +66,11 @@ a {
 }
 
 /* Make images easier to work with */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   max-width: 100%;
   display: block;
 }
@@ -80,21 +84,28 @@ select {
 }
 
 /* Word wrapping */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
 // Root stacking context https://www.joshwcomeau.com/css/stacking-contexts/
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -103,4 +114,16 @@ p, h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.containerWrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.homeSection {
+  background-image: url("/assets/images/bg1_home_dark.png");
+  background-repeat: no-repeat;
+  background-size: cover
 }
