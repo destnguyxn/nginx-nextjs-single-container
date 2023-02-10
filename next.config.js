@@ -19,18 +19,7 @@ let config = {
   distDir: '_next',
   assetPrefix: isNotProduction ? undefined : '/live-api-openapi-frontweb',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'nxas.nexon.com',
-        // port: '',
-        // pathname: '/account123/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-      },
-    ],
+    path: '/live-api-openapi-frontweb/_next/image',
   },
 };
 
