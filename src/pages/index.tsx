@@ -7,7 +7,9 @@ const Index = () => {
   return (
     <>
       <AppSEO title={'Home'} description="Homepage" />
-      <div className="homeSection"></div>
+      <div className="homeSection">
+        <h1>Hello</h1>
+      </div>
     </>
   );
 };
